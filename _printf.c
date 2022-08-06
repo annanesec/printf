@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			size++;
 		}
-		else
+		else if (format[i + 1] != '\0')
 		{
 			f = print_argument(format[i + 1]);
 			if (f)
@@ -35,6 +35,8 @@ int _printf(const char *format, ...)
 				size += 2;
 			i++;
 		}
+		else
+			return (-1);
 		i++;
 	}
 	va_end(args);

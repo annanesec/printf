@@ -8,24 +8,30 @@
   */
 int print_int(va_list args)
 {
-	int a, i;
+	int a, i, size;
 	int arr[100];
 
 	i = 99;
 	a = va_arg(args, int);
+	size = 0;
+	if (a < 0)
+	{
+		a *= -1;
+		size++;
+		_putchar('-');
+	}
 	while (a > 9)
 	{
 		arr[i--] = a % 10;
 		a /= 10;
 	}
 	arr[i] = a;
-	a = 0;
 	while (i < 100)
 	{
 		_putchar(arr[i++] + '0');
-		a++;
+		size++;
 	}
-	return (a);
+	return (size);
 }
 
 /**
