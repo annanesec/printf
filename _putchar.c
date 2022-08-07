@@ -9,5 +9,15 @@
  */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+	static char b[1024];
+	static int bSize;
+
+	if (c == -1 || bSize >= 1024)
+	{
+		write(1, &b, bSize);
+		bSize = 0;
+	}
+	if (c != -1)
+		b[bSize++] = c;
+	return (1);
 }

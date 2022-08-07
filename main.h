@@ -21,6 +21,10 @@ int print_string(va_list p);
 int print_char(va_list p);
 int print_per(va_list p);
 int print_binary(va_list p);
+int print_unsigned(va_list p);
+int print_octal(va_list p);
+int print_lower_hex(va_list p);
+int print_upper_hex(va_list p);
 
 int _printf(const char *format, ...);
 
