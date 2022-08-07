@@ -20,6 +20,8 @@ int print_int(va_list p);
 int print_string(va_list p);
 int print_char(va_list p);
 int print_per(va_list p);
+int print_binary(va_list p);
+
 int _printf(const char *format, ...);
 
 #endif /* H */

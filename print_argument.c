@@ -13,12 +13,13 @@ int (*print_argument(char c))(va_list p)
 		{'s', print_string},
 		{'d', print_int},
 		{'i', print_int},
-		{'%', print_per}
+		{'%', print_per},
+		{'b', print_binary}
 	};
 	int i;
 
 	i = 0;
-	while (i < 5)
+	while (i < 6)
 	{
 		if (c == list[i].c)
 			return (list[i].f);
