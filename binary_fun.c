@@ -8,10 +8,10 @@
   */
  int print_binary(va_list p)
 {
-	unsigned int n, i, size;
-	unsigned int arr[32];
+	 int n, i, size;
+	 int arr[32];
 
-	n = va_arg(p,unsigned int);
+	n = va_arg(p, int);
 	if (!n)
 	{
 		_putchar('0');
