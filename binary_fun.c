@@ -6,7 +6,7 @@
   * @p: pointer to list of arguments to get number
   * Return: length of binary
   */
-unsigned int print_binary(va_list p)
+ int print_binary(va_list p)
 {
 	unsigned int n, i, size;
 	unsigned int arr[32];
