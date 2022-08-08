@@ -18,12 +18,13 @@ int (*print_argument(char c))(va_list p)
 		{'u', print_unsigned},
 		{'o', print_octal},
 		{'x', print_lower_hex},
-		{'X', print_upper_hex}
+		{'X', print_upper_hex},
+		{'p', print_pointer},
+		{'S', print_String},
 	};
 	int i;
-
 	i = 0;
-	while (i < 10)
+	while (i < 14)
 	{
 		if (c == list[i].c)
 			return (list[i].f);
