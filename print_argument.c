@@ -23,8 +23,9 @@ int (*print_argument(char c))(va_list p)
 		{'S', print_String},
 	};
 	int i;
+
 	i = 0;
-	while (i < 14)
+	while (i < 12)
 	{
 		if (c == list[i].c)
 			return (list[i].f);
