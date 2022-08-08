@@ -25,7 +25,8 @@ int print_unsigned(va_list p);
 int print_octal(va_list p);
 int print_lower_hex(va_list p);
 int print_upper_hex(va_list p);
-
+int print_pointer(va_list list);
+int print_String(va_list p);
 int _printf(const char *format, ...);
 
 #endif /* H */
