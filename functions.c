@@ -19,6 +19,8 @@ int print_int(va_list args, int *flags)
 		a *= -1, size++, _putchar('-');
 	else if (flags[0])
 		_putchar('+'), size++;
+	else if (flags[1])
+		_putchar(' '), size++;
 	while (a > 9)
 	{
 		arr[i--] = a % 10;
@@ -68,10 +70,16 @@ int print_string(va_list args,  __attribute__((unused)) int *flags)
 /**
   * print_per - print % sign
   * @args: pointer to list
+  * @flags: array of flags
   * Return: 1
   */
-int print_per(__attribute__((unused)) va_list args)
+int print_per(__attribute__((unused)) va_list args, int *flags)
 {
+	int a;
+
+	a = flags[0];
+	if (a == 20)
+		_printf("dummy");
 	_putchar('%');
 	return (1);
 }

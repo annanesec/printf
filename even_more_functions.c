@@ -82,3 +82,66 @@ int print_String(va_list p, __attribute__((unused)) int *flags)
 	}
 	return (size);
 }
+
+/**
+  * print_rev - print string in reverse
+  * @p: pointer to argument list
+  * @flags: array of flags
+  * Return: Length of string
+  */
+int print_rev(va_list p, __attribute__((unused)) int *flags)
+{
+	char *s;
+	int i, size;
+
+	s = va_arg(p, char *);
+	if (!s)
+		s = ")llun(";
+
+	i = 0;
+	while (s[i])
+		i++;
+	size = i--;
+	while (i >= 0)
+		_putchar(s[i--]);
+	return (size);
+}
+
+/**
+  * print_rot13 - prints the rot13'ed string
+  * @p: pointer to argument list
+  * @flags: array of flags
+  * Return: Length of string
+  */
+int print_rot13(va_list p, __attribute__((unused)) int *flags)
+{
+	char *s;
+	char c;
+	int i, j, size;
+
+	s = va_arg(p, char *);
+	if (!s)
+		return (_printf("(null)"));
+	i = 0, size = 0;
+	while (s[i])
+	{
+		c = s[i];
+		if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		{
+			for (j = 0; j < 13; j++)
+			{
+				if (c == 'z')
+					c = 'a';
+				else if (c == 'Z')
+					c = 'A';
+				else
+					c++;
+			}
+			_putchar(c);
+		}
+		else
+			_putchar(c);
+		size++, i++;
+	}
+	return (size);
+}

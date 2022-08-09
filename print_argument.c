@@ -21,11 +21,13 @@ int (*print_argument(char c))(va_list, int *)
 		{'X', print_upper_hex},
 		{'p', print_pointer},
 		{'S', print_String},
+		{'r', print_rev},
+		{'R', print_rot13}
 	};
 	int i;
 
 	i = 0;
-	while (i < 12)
+	while (i < 14)
 	{
 		if (c == list[i].c)
 			return (list[i].f);
