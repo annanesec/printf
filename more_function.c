@@ -59,13 +59,14 @@ int print_unsigned(va_list p)
 /**
   * print_octal - convert decimal to octal and print it
   * @p: pointer to argument list to get number
+  * @flags: array of flags
   * Return: length of octal
   */
-int print_octal(va_list p)
+int print_octal(va_list p, int *flags)
 {
 	unsigned int n, size;
 	unsigned int arr[100];
-	int i;
+	int i, f;
 
 	n = va_arg(p, unsigned int);
 	if (!n)
@@ -73,7 +74,9 @@ int print_octal(va_list p)
 		_putchar('0');
 		return (1);
 	}
-	size = 0;
+	size = 0, f = 0;
+	if (flags[2])
+		_putchar('0'), f++;
 	while (n > 0)
 	{
 		arr[size++] = n % 8;
@@ -81,19 +84,20 @@ int print_octal(va_list p)
 	}
 	for (i = size - 1; i >= 0; i--)
 		_putchar(arr[i] + '0');
-	return (size);
+	return (size + f);
 }
 
 /**
   * print_upper_hex - convert decimal to upper hexadecimal and print it
   * @p: pointer to argument list to get number
+  * @flags: array of flags
   * Return: length of hexa
   */
-int print_upper_hex(va_list p)
+int print_upper_hex(va_list p, int *flags)
 {
 	unsigned int n, size;
 	unsigned int arr[100];
-	int i;
+	int i, f;
 
 	n = va_arg(p, unsigned int);
 	if (!n)
@@ -101,7 +105,9 @@ int print_upper_hex(va_list p)
 		_putchar('0');
 		return (1);
 	}
-	size = 0;
+	size = 0, f = 0;
+	if (flags[2])
+		_putchar('0'), _putchar('X'), f += 2;
 	while (n > 0)
 	{
 		arr[size++] = n % 16;
@@ -114,19 +120,20 @@ int print_upper_hex(va_list p)
 		else
 			_putchar(arr[i] + '7');
 	}
-	return (size);
+	return (size + f);
 }
 
 /**
   * print_lower_hex - convert decimal to lower hexadecimal and print it
   * @p: pointer to argument list to get number
+  * @flags: array of flags
   * Return: length of hexa
   */
-int print_lower_hex(va_list p)
+int print_lower_hex(va_list p, int *flags)
 {
 	unsigned int n, size;
 	unsigned int arr[100];
-	int i;
+	int i, f;
 
 	n = va_arg(p, unsigned int);
 	if (!n)
@@ -134,7 +141,9 @@ int print_lower_hex(va_list p)
 		_putchar('0');
 		return (1);
 	}
-	size = 0;
+	size = 0, f = 0;
+	if (flags[2])
+		_putchar('0'), _putchar('x'), f += 2;
 	while (n > 0)
 	{
 		arr[size++] = n % 16;
@@ -147,5 +156,5 @@ int print_lower_hex(va_list p)
 		else
 			_putchar(arr[i] + 'W');
 	}
-	return (size);
+	return (size + 2);
 }

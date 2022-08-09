@@ -6,7 +6,7 @@
  * @c: specifier
  * Return: void
  */
-int (*print_argument(char c))(va_list p)
+int (*print_argument(char c))(va_list, int *)
 {
 	sp list[] = {
 		{'c', print_char},

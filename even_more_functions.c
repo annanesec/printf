@@ -4,29 +4,32 @@
 /**
   * print_pointer - print an adress in hexadecimal format
   * @list: pointer to argument list
-  *
+  * @flags: array of flags
   * Return: Length of the number
   */
-int print_pointer(va_list list)
+int print_pointer(va_list list, int *flags)
 {
 	void *p;
 	unsigned long int n;
-	int i, size;
+	int i, size, f;
 	unsigned int arr[100];
 
 	p = va_arg(list, void *);
 	if (!p)
 		return (_printf("(null)"));
-	n = (unsigned long int)p;
-	_putchar('0');
-	_putchar('x');
+	n = (unsigned long int)p, size = 0, f = 0;
+
+	if (flags[0])
+		_putchar('+'), f++;
+	else if (flags[1])
+		_putchar(' '), f++;
+	_putchar('0'), _putchar('x');
 
 	if (!n)
 	{
 		_putchar('0');
 		return (3);
 	}
-	size = 0;
 	while (n > 0)
 	{
 		arr[size++] = n % 16;
@@ -39,7 +42,7 @@ int print_pointer(va_list list)
 		else
 			_putchar(arr[i] + 'W');
 	}
-	return (size + 2);
+	return (size + 2 + f);
 }
 
 /**

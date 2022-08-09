@@ -1,5 +1,8 @@
 #include "main.h"
 
+void set_to_zero(int *a);
+int get_flags(char c, int *a);
+
 /**
  * _printf - print according to format
  * @format: format given
@@ -7,43 +10,73 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, size;
+	int flags[3], size;
 	va_list args;
-	int (*f)(va_list args);
+	const char *s;
+	int (*f)(va_list args, int *flags);
 
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] && format[1] == ' ' && !format[2])
+	s = format;
+	if (!s || (s[0] == '%' && s[1] == ' ' && s[2] == '\0'))
 		return (-1);
 
 	va_start(args, format);
-	i = 0;
-	size = 0;
-	while (format[i] != '\0')
+	size = 0, set_to_zero(flags);
+	while (*s)
 	{
-		if (format[i] != '%')
+		if (*s != '%')
+			_putchar(*s), size++;
+		else if (*s == '%')
 		{
-			_putchar(format[i]);
-			size++;
-		}
-		else if (format[i + 1] != '\0')
-		{
-			f = print_argument(format[i + 1]);
+			s++;
+			while (*s && get_flags(*s, flags))
+				s++;
+			if (!(*s))
+				return (-1);
+			f = print_argument(*s);
 			if (f)
-			{
-				size += f(args);
-			}
+				size += f(args, flags);
 			else
 				size += 2;
-			i++;
 		}
-		else
-			return (-1);
-		i++;
+		s++, set_to_zero(flags);
 	}
 	_putchar(-1);
 	va_end(args);
-
 	return (size);
 }
 
+/**
+  * get_flags - search for flags (+, space, #)
+  * @c: character
+  * @flags: array of flags
+  * Return: 0 not found | 1 found
+  */
+int get_flags(char c, int *flags)
+{
+	if (c == '+')
+	{
+		flags[0] = 1;
+		return (1);
+	}
+	else if (c == ' ')
+	{
+		flags[1] = 1;
+		return (1);
+	}
+	else if (c == '#')
+	{
+		flags[2] = 1;
+		return (1);
+	}
+	return (0);
+}
+
+/**
+  * set_to_zero - set flags to zero
+  * @a: array of flags
+  * Return: void
+  */
+void set_to_zero(int *a)
+{
+	a[0] = 0, a[1] = 0, a[2] = 0;
+}

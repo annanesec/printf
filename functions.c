@@ -4,9 +4,10 @@
 /**
   * print_int - print integer
   * @args: pointer to list to get integer
+  * @flags: array of flags
   * Return: digit count
   */
-int print_int(va_list args)
+int print_int(va_list args, int *flags)
 {
 	int a, i, size;
 	int arr[100];
@@ -15,11 +16,9 @@ int print_int(va_list args)
 	a = va_arg(args, int);
 	size = 0;
 	if (a < 0)
-	{
-		a *= -1;
-		size++;
-		_putchar('-');
-	}
+		a *= -1, size++, _putchar('-');
+	else if (flags[0])
+		_putchar('+'), size++;
 	while (a > 9)
 	{
 		arr[i--] = a % 10;
