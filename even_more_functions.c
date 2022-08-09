@@ -50,9 +50,10 @@ int print_pointer(va_list list, int *flags)
   * Description: print printable characters literally and substitute
   * no printable characters wiwth "\x(ascii vali)"
   * @p: pointer to argument list
+  * @flags: array of flags
   * Return: Length of string
   */
-int print_String(va_list p)
+int print_String(va_list p, __attribute__((unused)) int *flags)
 {
 	char *s, *non_p;
 	int i, size;

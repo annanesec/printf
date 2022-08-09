@@ -36,9 +36,10 @@ int print_int(va_list args, int *flags)
 /**
   * print_char - print character
   * @args: pointer to list to get integer
+  * @flags: array of flags
   * Return: 1
   */
-int print_char(va_list args)
+int print_char(va_list args,  __attribute__((unused)) int *flags)
 {
 	_putchar(va_arg(args, int));
 	return (1);
@@ -47,9 +48,10 @@ int print_char(va_list args)
 /**
   * print_string - print string
   * @args: pointer to list to get string
+  * @flags: array of flags
   * Return: string length
   */
-int print_string(va_list args)
+int print_string(va_list args,  __attribute__((unused)) int *flags)
 {
 	int i;
 	char *s;

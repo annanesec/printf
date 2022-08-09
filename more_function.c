@@ -4,9 +4,10 @@
 /**
   * print_binary - convert decimal into binary and print it
   * @p: pointer to list of arguments to get number
+  * @flags: array of flags
   * Return: length of binary
   */
-int print_binary(va_list p)
+int print_binary(va_list p, __attribute__((unused)) int *flags)
 {
 	int n, i, size;
 	int arr[32];
@@ -32,9 +33,10 @@ int print_binary(va_list p)
 /**
   * print_unsigned - print unsigned integer
   * @p: pointer to list of arguments to get number
+  * @flags: array of flags
   * Return: length of number
   */
-int print_unsigned(va_list p)
+int print_unsigned(va_list p, __attribute__((unused)) int *flags)
 {
 	unsigned int a, i, size;
 	unsigned int arr[100];
