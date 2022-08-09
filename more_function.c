@@ -158,5 +158,5 @@ int print_lower_hex(va_list p, int *flags)
 		else
 			_putchar(arr[i] + 'W');
 	}
-	return (size + 2);
+	return (size + f);
 }
