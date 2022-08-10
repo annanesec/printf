@@ -16,7 +16,7 @@ int print_pointer(va_list list, int *flags)
 
 	p = va_arg(list, void *);
 	if (!p)
-		return (_printf("(null)"));
+		return (_printf("(nil)"));
 	n = (unsigned long int)p, size = 0, f = 0;
 
 	if (flags[0])
