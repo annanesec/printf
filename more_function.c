@@ -9,7 +9,8 @@
   */
 int print_binary(va_list p, __attribute__((unused)) int *flags)
 {
-	int n, i, size;
+	unsigned int n, size;
+	int i;
 	int arr[32];
 
 	n = va_arg(p, int);
