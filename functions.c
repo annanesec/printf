@@ -9,24 +9,25 @@
   */
 int print_int(va_list args, int *flags)
 {
-	int a, i, size;
+	int a, i, size, rem;
 	int arr[100];
 
 	i = 99;
 	a = va_arg(args, int);
 	size = 0;
 	if (a < 0)
-		a *= -1, size++, _putchar('-');
+		_putchar('-'), size++;
 	else if (flags[0])
 		_putchar('+'), size++;
 	else if (flags[1])
 		_putchar(' '), size++;
-	while (a > 9)
+	while (a > 9 || a < -9)
 	{
-		arr[i--] = a % 10;
+		rem = a % 10;
+		arr[i--] = (rem > 0) ? (rem) : (rem * (-1));
 		a /= 10;
 	}
-	arr[i] = a;
+	arr[i] = (a > 0) ? (a) : (a * (-1));
 	while (i < 100)
 	{
 		_putchar(arr[i++] + '0');
